@@ -6,5 +6,4 @@ public interface PatientService {
 
     void updatePatient(Patient patient);
 
-    void addStudent(Patient patient);
 }
