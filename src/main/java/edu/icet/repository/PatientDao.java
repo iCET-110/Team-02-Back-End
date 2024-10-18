@@ -1,4 +1,7 @@
 package edu.icet.repository;
 
-public interface PatientDao {
+import edu.icet.dto.Patient;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PatientDao extends JpaRepository<Patient,Integer> {
 }
