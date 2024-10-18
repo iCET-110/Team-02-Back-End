@@ -9,10 +9,5 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Slf4j
 public class GuardiantController {
-    final GuardiantService guardiantService;
-    @DeleteMapping("/delete-guardian/{id}")
-    public void deleteGuardiant(@PathVariable String id){
-        guardiantService.deleteGuardiant(id);
 
-    }
 }

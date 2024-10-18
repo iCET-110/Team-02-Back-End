@@ -5,11 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
-public class GuardiantServiceImpl implements GuardiantService {
-    final GuardiantDao guardiantDao;
-    @Override
-    public void deleteGuardiant(String id) {
-        guardiantDao.deleteById(id);
+public class GuardiantServiceImpl  {
 
-    }
 }
