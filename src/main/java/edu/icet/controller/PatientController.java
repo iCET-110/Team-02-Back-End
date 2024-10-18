@@ -1,15 +1,18 @@
 package edu.icet.controller;
-
 import edu.icet.dto.Patient;
 import edu.icet.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/patient")
 @RequiredArgsConstructor
+@Slf4j
+
 public class PatientController {
     final PatientService patientService;
     @GetMapping
@@ -26,5 +29,9 @@ public class PatientController {
     @GetMapping("/nic/{nic}")
     public Patient searchStudentByNic(@PathVariable String nic){
         return patientService.getByNic(nic);
+    }
+    @PutMapping
+    public void updatePatient(@RequestBody Patient patient) {
+        patientService.updatePatient(patient);
     }
 }

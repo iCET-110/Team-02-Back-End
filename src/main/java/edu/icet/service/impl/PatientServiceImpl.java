@@ -6,8 +6,8 @@ import edu.icet.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 @Service
 @Primary
 @RequiredArgsConstructor
@@ -33,5 +33,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<Patient> getPatients() {
         return patientDao.findAll();
+    }
+    
+    @Override
+    public void updatePatient(Patient patient) {
+        patientDao.save(patient);
     }
 }

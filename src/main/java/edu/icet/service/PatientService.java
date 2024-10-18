@@ -1,7 +1,5 @@
 package edu.icet.service;
-
 import edu.icet.dto.Patient;
-
 import java.util.List;
 
 public interface PatientService {
@@ -9,5 +7,5 @@ public interface PatientService {
     Patient findById(String id);
     Patient getByNic(String nic);
     List<Patient> getPatients();
-
+    void updatePatient(Patient patient);
 }
