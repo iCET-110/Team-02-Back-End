@@ -33,4 +33,5 @@ public class Patient {
     private LocalDateTime admittedDateTime;
     private String allergyStatus; // if has allergies "true" else "false"
     private String remarks; // allergy description
+    private String guardianNic;
 }
