@@ -9,10 +9,16 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class PatientServiceImpl implements PatientService {
-    private final PatientDao patientDao;
+
+    final PatientDao dao;
 
     @Override
     public void addStudent(Patient patient) {
-        patientDao.save(patient);
+        dao.save(patient);
+    }
+
+    @Override
+    public void updatePatient(Patient patient) {
+        dao.save(patient);
     }
 }

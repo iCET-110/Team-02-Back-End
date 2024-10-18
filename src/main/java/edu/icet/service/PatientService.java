@@ -3,5 +3,7 @@ package edu.icet.service;
 import edu.icet.dto.Patient;
 
 public interface PatientService {
-    void addStudent(Patient patient);
+
+    void updatePatient(Patient patient);
+    public void addStudent(Patient patient);
 }
