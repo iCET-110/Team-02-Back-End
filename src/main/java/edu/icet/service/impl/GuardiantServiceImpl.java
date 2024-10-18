@@ -1,13 +1,18 @@
 package edu.icet.service.impl;
 
 import edu.icet.dto.Guardian;
+import edu.icet.repository.GuardiantDao;
 import edu.icet.service.GuardiantService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class GuardiantServiceImpl implements GuardiantService {
+    private  final GuardiantDao guardiantDao;
+
     @Override
     public void updateGuardian(Guardian guardiant) {
-
+    guardiantDao.save(guardiant);
     }
 }
