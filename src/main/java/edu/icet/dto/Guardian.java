@@ -1,4 +1,4 @@
 package edu.icet.dto;
 
-public class Guardiant {
+public class Guardian {
 }
