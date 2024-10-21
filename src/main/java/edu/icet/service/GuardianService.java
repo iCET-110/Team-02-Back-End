@@ -7,4 +7,8 @@ import java.util.List;
 public interface GuardianService {
     List<Guardian> getGuardian();
     void addGuardian(Guardian guardian);
+
+    void deleteGuardianById(String id);
+
+    void deleteAllGuardian();
 }
