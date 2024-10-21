@@ -24,7 +24,8 @@ public class PatientController {
     }
     @GetMapping
     public List <Patient> getPatients() {
-        return patientService.getPatients();}
+        return patientService.getPatients();
+    }
     @GetMapping("/{id}")
     public Patient searchPatientById(@PathVariable Long id) {
         return patientService.findById(id);
@@ -35,6 +36,7 @@ public class PatientController {
     }
     @GetMapping("/nic/{nic}")
     public Patient searchPatientByNic(@PathVariable String nic){
+
         return patientService.getByNic(nic);
     }
     @PutMapping
