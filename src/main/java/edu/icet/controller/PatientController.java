@@ -15,6 +15,12 @@ import java.util.List;
 
 public class PatientController {
     final PatientService patientService;
+    
+    @PostMapping("/add-patient")
+    public void addPatient(@RequestBody Patient patient){
+        log.info("Received Patient: {}", patient);
+        service.addStudent(patient);
+    }
     @GetMapping
     public List <Patient> getPatients() {
         return patientService.getPatients();}
