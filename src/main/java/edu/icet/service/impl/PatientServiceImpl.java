@@ -1,4 +1,9 @@
 package edu.icet.service.impl;
 
-public class PatientServiceImpl {
+
+import edu.icet.service.PatientService;
+
+
+public class PatientServiceImpl implements PatientService {
+
 }
