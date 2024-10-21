@@ -1,4 +1,8 @@
-package edu.icet.dto;
+package edu.icet.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +12,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Guardian {
+@Entity
+@Table(name = "Guardian")
+public class GuardianEntity {
+    @Id
     private String guardianNIC;
     private String guardianName;
     private String guardianContact;
