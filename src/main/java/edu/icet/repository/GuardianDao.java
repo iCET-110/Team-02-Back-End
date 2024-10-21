@@ -1,4 +1,9 @@
 package edu.icet.repository;
 
-public interface GuardianDao {
+import edu.icet.entity.GuardianEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface GuardianDao extends JpaRepository<GuardianEntity,String> {
+
 }
