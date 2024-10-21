@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface PatientService {
     List<Patient> getByName(String name);
-    Patient findById(String id);
+    Patient findById(Long id);
     Patient getByNic(String nic);
     List<Patient> getPatients();
     void updatePatient(Patient patient);
-    void addStudent(Patient patient);
+    void addPatient(Patient patient);
 }
