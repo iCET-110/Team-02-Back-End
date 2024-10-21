@@ -25,9 +25,16 @@ public List<Guardian> getGuardian() {
 public void addGuardian(@RequestBody Guardian guardian) {
     guardianService.addGuardian(guardian);
 }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete-{id}")
     public void deleteGuardianById(@PathVariable String id ,HttpServletRequest request){
         String ip = request.getRemoteAddr();
         log.info("Request Received Delete-{} {}",id,ip);
+        guardianService.deleteGuardianById(id);
+    }
+    @DeleteMapping("/delete-all")
+    public void deleteAllGuardian(HttpServletRequest request){
+        String ip = request.getRemoteAddr();
+        log.info("Request Received Delete-all {}",ip);
+        guardianService.deleteAllGuardian();
     }
 }
