@@ -2,6 +2,7 @@ package edu.icet.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.icet.dto.Guardian;
+import edu.icet.dto.Patient;
 import edu.icet.entity.GuardianEntity;
 import edu.icet.repository.GuardianDao;
 import edu.icet.service.GuardianService;
@@ -29,6 +30,11 @@ public class GuardianServiceImpl implements GuardianService {
     }
     @Override
     public void addGuardian(Guardian guardian) {
+        guardianDao.save(objectMapper.convertValue(guardian, GuardianEntity.class));
+    }
+
+    @Override
+    public void updateGuardian(Guardian guardian) {
         guardianDao.save(objectMapper.convertValue(guardian, GuardianEntity.class));
     }
 }
