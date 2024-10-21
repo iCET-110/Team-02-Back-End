@@ -18,7 +18,7 @@ public class PatientController {
     @PostMapping("/add-patient")
     public void addPatient(@RequestBody Patient patient){
         log.info("Received Patient: {}", patient);
-        service.addStudent(patient);
+        service.addPatient(patient);
     }
 
     @PutMapping

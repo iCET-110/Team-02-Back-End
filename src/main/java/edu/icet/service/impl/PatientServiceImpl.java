@@ -13,7 +13,7 @@ public class PatientServiceImpl implements PatientService {
     final PatientDao dao;
 
     @Override
-    public void addStudent(Patient patient) {
+    public  void addPatient(Patient patient) {
         dao.save(patient);
     }
 
