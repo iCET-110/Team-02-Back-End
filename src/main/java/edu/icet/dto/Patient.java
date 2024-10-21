@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 public class Patient {
-    private Long patientId;
+    private Long id;
     private String firstName;
     private String lastName;
     private Integer age;

@@ -1,10 +1,11 @@
 package edu.icet.controller;
+
 import edu.icet.dto.Patient;
 import edu.icet.service.PatientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -12,20 +13,20 @@ import java.util.List;
 @RequestMapping("/patient")
 @RequiredArgsConstructor
 @Slf4j
-
 public class PatientController {
+
     final PatientService patientService;
     
     @PostMapping("/add-patient")
     public void addPatient(@RequestBody Patient patient){
         log.info("Received Patient: {}", patient);
-        service.addStudent(patient);
+        patientService.addPatient(patient);
     }
     @GetMapping
     public List <Patient> getPatients() {
         return patientService.getPatients();}
     @GetMapping("/{id}")
-    public Patient searchStudentById(@PathVariable String id) {
+    public Patient searchStudentById(@PathVariable Long id) {
         return patientService.findById(id);
     }
     @GetMapping("/name/{name}")
