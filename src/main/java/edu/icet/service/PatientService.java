@@ -8,4 +8,5 @@ public interface PatientService {
     Patient getByNic(String nic);
     List<Patient> getPatients();
     void updatePatient(Patient patient);
+    void addStudent(Patient patient);
 }
