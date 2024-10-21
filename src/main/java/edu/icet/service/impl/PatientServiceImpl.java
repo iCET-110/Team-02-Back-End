@@ -22,6 +22,7 @@ public class PatientServiceImpl implements PatientService {
     public void addPatient(Patient patient) {
         patientDao.save(objectMapper.convertValue(patient, PatientEntity.class));
     }
+    @Override
     public List<Patient> getByName(String name) {
         List<Patient> patientList = new ArrayList<>();
         patientDao.findByFirstName(name).forEach(patientEntity -> {
