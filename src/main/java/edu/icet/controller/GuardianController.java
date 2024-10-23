@@ -1,11 +1,13 @@
 package edu.icet.controller;
 
 import edu.icet.dto.Guardian;
+import edu.icet.entity.GuardianEntity;
 import edu.icet.service.GuardianService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,4 +29,9 @@ public class GuardianController {
 
     @PutMapping("/update-guardian")
     public void updateGuardian(@RequestBody Guardian guardian) {guardianService.updateGuardian(guardian);}
+
+    @GetMapping("/search-guardian/{guardianNIC}")
+    public Optional<GuardianEntity> searchGuardian(@PathVariable String guardianNIC){
+       return guardianService.searchGuardian(guardianNIC);
+    }
 }

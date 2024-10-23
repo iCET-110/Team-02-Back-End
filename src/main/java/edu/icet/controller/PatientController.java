@@ -34,7 +34,7 @@ public class PatientController {
         return patientService.getByName(name);
     }
     @GetMapping("/nic/{nic}")
-    public Patient searchStudentByNic(@PathVariable String nic){
+    public Patient searchPatientByNic(@PathVariable String nic){
         return patientService.getByNic(nic);
     }
     @PutMapping
