@@ -33,9 +33,7 @@ class PatientServiceImplTest {
         Patient patient = new Patient();
         PatientEntity patientEntity = new PatientEntity();
         when(objectMapper.convertValue(patient, PatientEntity.class)).thenReturn(patientEntity);
-
         patientService.updatePatient(patient);
-
         verify(patientDao).save(patientEntity);
     }
 }
