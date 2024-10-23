@@ -24,17 +24,19 @@ public class PatientController {
     }
     @GetMapping
     public List <Patient> getPatients() {
-        return patientService.getPatients();}
+        return patientService.getPatients();
+    }
     @GetMapping("/{id}")
-    public Patient searchStudentById(@PathVariable Long id) {
+    public Patient searchPatientById(@PathVariable Long id) {
         return patientService.findById(id);
     }
     @GetMapping("/name/{name}")
-    public List<Patient> searchStudentByName(@PathVariable String name){
+    public List<Patient> searchPatientByName(@PathVariable String name){
         return patientService.getByName(name);
     }
     @GetMapping("/nic/{nic}")
     public Patient searchPatientByNic(@PathVariable String nic){
+
         return patientService.getByNic(nic);
     }
     @PutMapping
