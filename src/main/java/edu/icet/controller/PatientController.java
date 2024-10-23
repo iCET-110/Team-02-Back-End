@@ -31,22 +31,22 @@ public class PatientController {
         return ResponseEntity.ok("Patient added successfully");
     }
 
-    @GetMapping
+    @GetMapping("/patient-get-all")
     public List<Patient> getPatients() {
         return patientService.getPatients();
     }
 
-    @GetMapping("/{id}")
-    public Patient searchPatientById(@PathVariable Long id) {
+    @GetMapping("/patient-serach-by-id/{id}")
+    public Patient searchPatientById(@Valid @PathVariable Long id) {
         return patientService.findById(id);
     }
 
-    @GetMapping("/name/{name}")
-    public List<Patient> searchPatientByName(@PathVariable String name){
+    @GetMapping("/patient-serach-by-name/{name}")
+    public List<Patient> searchPatientByName(@Valid @PathVariable String name){
         return patientService.getByName(name);
     }
 
-    @GetMapping("/nic/{nic}")
+    @GetMapping("/patient-serach-by-nic/{nic}")
     public Patient searchPatientByNic(@PathVariable String nic){
         return patientService.getByNic(nic);
     }
@@ -55,6 +55,18 @@ public class PatientController {
     public ResponseEntity<String> updatePatient(@Valid @RequestBody Patient patient) {
         patientService.updatePatient(patient);
         return ResponseEntity.ok("Patient updated successfully");
+    }
+
+    @DeleteMapping("/patient-delete-by-id/{id}")
+    public ResponseEntity<String> deletePatient(@Valid @PathVariable Long id){
+        patientService.deletPatient(id);
+        return ResponseEntity.ok("Patient deleted successfully");
+    }
+
+    @DeleteMapping("/patient-delete-all")
+    public ResponseEntity<String> deleteAllPatients(){
+        patientService.deleteAll();
+        return ResponseEntity.ok("All patients deleted successfully");
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

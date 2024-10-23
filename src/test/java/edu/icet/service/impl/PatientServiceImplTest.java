@@ -57,6 +57,7 @@ class PatientServiceImplTest {
 
         Patient result = patientService.findById(id);
 
+        assertNotNull(result);
         assertEquals(patient, result);
     }
 
