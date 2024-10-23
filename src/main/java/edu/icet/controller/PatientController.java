@@ -31,10 +31,12 @@ public class PatientController {
         return ResponseEntity.ok("Patient added successfully");
     }
 
-    @GetMapping
+
+    @GetMapping("/patient-get-all")
     public List<Patient> getPatients() {
         return patientService.getPatients();
     }
+
 
     @GetMapping("/{id}")
     public Patient searchPatientById(@PathVariable Long id) {
@@ -55,6 +57,44 @@ public class PatientController {
     public ResponseEntity<String> updatePatient(@Valid @RequestBody Patient patient) {
         patientService.updatePatient(patient);
         return ResponseEntity.ok("Patient Updated Successfully");
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
+   @GetMapping("/patient-search-by-id/{id}")
+    public Patient searchPatientById(@Valid @PathVariable Long id) {
+        return patientService.findById(id);
+    }
+   @GetMapping("/patient-search-by-nic/{nic}")
+    public Patient searchPatientByNic(@PathVariable String nic){
+      return patientService.getByNic(nic);
+    }
+
+    @PutMapping
+    public ResponseEntity<String> updatePatient(@Valid @RequestBody Patient patient) {
+        patientService.updatePatient(patient);
+        return ResponseEntity.ok("Patient updated successfully");
+    }
+
+    @DeleteMapping("/patient-delete-by-id/{id}")
+    public ResponseEntity<String> deletePatient(@Valid @PathVariable Long id){
+        patientService.deletPatient(id);
+        return ResponseEntity.ok("Patient deleted successfully");
+    }
+
+    @DeleteMapping("/patient-delete-all")
+    public ResponseEntity<String> deleteAllPatients(){
+        patientService.deleteAll();
+        return ResponseEntity.ok("All patients deleted successfully");
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
