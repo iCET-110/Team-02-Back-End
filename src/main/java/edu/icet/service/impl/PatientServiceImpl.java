@@ -22,6 +22,7 @@ public class PatientServiceImpl implements PatientService {
     public void addPatient(Patient patient) {
         patientDao.save(objectMapper.convertValue(patient, PatientEntity.class));
     }
+
     public List<Patient> getByName(String name) {
         List<Patient> patientList = new ArrayList<>();
         patientDao.findByFirstName(name).forEach(patientEntity -> {
@@ -29,6 +30,7 @@ public class PatientServiceImpl implements PatientService {
         });
         return patientList;
     }
+
     @Override
     public Patient findById(Long id) {
         return objectMapper.convertValue(patientDao.findById(id), Patient.class);
@@ -42,15 +44,14 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<Patient> getPatients() {
         ArrayList<Patient> patientArrayList = new ArrayList<>();
-        patientDao.findAll().forEach(entity->{
+        patientDao.findAll().forEach(entity -> {
             patientArrayList.add(objectMapper.convertValue(entity, Patient.class));
         });
         return patientArrayList;
     }
-    
+
     @Override
     public void updatePatient(Patient patient) {
         patientDao.save(objectMapper.convertValue(patient, PatientEntity.class));
     }
-
 }
