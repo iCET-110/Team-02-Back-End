@@ -28,21 +28,6 @@ public class PatientController {
         return patientService.getPatients();
     }
 
-    @GetMapping("/{id}")
-    public Patient searchStudentById(@PathVariable Long id) {
-        return patientService.findById(id);
-    }
-
-    @GetMapping("/name/{name}")
-    public List<Patient> searchStudentByName(@PathVariable String name) {
-        return patientService.getByName(name);
-    }
-
-    @GetMapping("/nic/{nic}")
-    public Patient searchStudentByNic(@PathVariable String nic) {
-        return patientService.getByNic(nic);
-    }
-
     @PutMapping
     public void updatePatient(@RequestBody Patient patient) {
         patientService.updatePatient(patient);
