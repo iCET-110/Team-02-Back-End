@@ -12,5 +12,4 @@ public class Guardian {
     private String guardianNIC;
     private String guardianName;
     private String guardianContact;
-
 }
