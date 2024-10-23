@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.icet.dto.Guardian;
 import edu.icet.dto.Patient;
 import edu.icet.entity.GuardianEntity;
+import edu.icet.entity.PatientEntity;
 import edu.icet.repository.GuardianDao;
 import edu.icet.service.GuardianService;
 import lombok.RequiredArgsConstructor;
@@ -27,14 +28,16 @@ public class GuardianServiceImpl implements GuardianService {
         });
         return guardianList;
     }
-
     @Override
     public void addGuardian(Guardian guardian) {
         guardianDao.save(objectMapper.convertValue(guardian, GuardianEntity.class));
     }
-
     @Override
     public void updateGuardian(Guardian guardian) {
         guardianDao.save(objectMapper.convertValue(guardian, GuardianEntity.class));
+    }
+    @Override
+    public void deleteGuardian(String guardianNIC) {
+        guardianDao.deleteById(guardianNIC);  // Implementation of delete by ID
     }
 }

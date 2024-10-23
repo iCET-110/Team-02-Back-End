@@ -6,18 +6,12 @@ import java.util.List;
 
 public interface PatientService {
     List<Patient> getByName(String name);
-
     Patient findById(Long id);
-
     Patient getByNic(String nic);
-
     List<Patient> getPatients();
-
-    void updatePatient(Patient patient);
-
-    void addPatient(Patient patient);
-
-    void deletPatient(Long id);
-
+    boolean updatePatient(Patient patient);
+    boolean addPatient(Patient patient);
+    void deletePatient(Long id);
     void deleteAll();
 }
+
