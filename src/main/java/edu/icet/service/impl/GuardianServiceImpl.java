@@ -2,22 +2,22 @@ package edu.icet.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.icet.dto.Guardian;
+import edu.icet.dto.Patient;
 import edu.icet.entity.GuardianEntity;
 import edu.icet.repository.GuardianDao;
 import edu.icet.service.GuardianService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class GuardianServiceImpl implements GuardianService {
-    @Autowired
-    GuardianDao guardianDao;
 
-    @Autowired
-    ObjectMapper objectMapper;
+    final GuardianDao guardianDao;
+    final ObjectMapper objectMapper;
 
     @Override
     public List<Guardian> getGuardian() {
@@ -27,8 +27,14 @@ public class GuardianServiceImpl implements GuardianService {
         });
         return guardianList;
     }
+
     @Override
     public void addGuardian(Guardian guardian) {
+        guardianDao.save(objectMapper.convertValue(guardian, GuardianEntity.class));
+    }
+
+    @Override
+    public void updateGuardian(Guardian guardian) {
         guardianDao.save(objectMapper.convertValue(guardian, GuardianEntity.class));
     }
 }
