@@ -76,4 +76,16 @@ public class PatientController {
         });
         return errors;
     }
+
+    @DeleteMapping("/patient-delete-by-id/{id}")
+    public ResponseEntity<String> deletePatient(@Valid @PathVariable Long id) {
+        patientService.deletePatient(id);
+        return ResponseEntity.ok("Patient deleted successfully");
+    }
+
+    @DeleteMapping("/patient-delete-all")
+    public ResponseEntity<String> deleteAllPatients() {
+        patientService.deleteAll();
+        return ResponseEntity.ok("All patients deleted successfully");
+    }
 }

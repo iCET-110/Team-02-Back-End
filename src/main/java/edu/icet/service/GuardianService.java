@@ -8,4 +8,5 @@ public interface GuardianService {
     List<Guardian> getGuardian();
     void addGuardian(Guardian guardian);
     void updateGuardian(Guardian guardian);
+    void deleteGuardian(String guardianNIC);
 }

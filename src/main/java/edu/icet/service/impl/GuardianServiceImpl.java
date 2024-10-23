@@ -37,4 +37,9 @@ public class GuardianServiceImpl implements GuardianService {
     public void updateGuardian(Guardian guardian) {
         guardianDao.save(objectMapper.convertValue(guardian, GuardianEntity.class));
     }
+
+    @Override
+    public void deleteGuardian(String guardianNIC) {
+        guardianDao.deleteById(guardianNIC);  // Implementation of delete by ID
+    }
 }

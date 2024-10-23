@@ -10,7 +10,7 @@ public interface PatientService {
     boolean updatePatient(Patient patient);
     boolean addPatient(Patient patient);
 
-    void deletPatient(Long id);
+    void deletePatient(Long id);
 
     void deleteAll();
 }

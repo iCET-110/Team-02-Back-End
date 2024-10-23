@@ -37,4 +37,10 @@ public class GuardianController {
         guardianService.updateGuardian(guardian);
         return ResponseEntity.ok("Guardian Updated Successfully");
     }
+
+    @DeleteMapping("/guardian-delete-by-nic/{guardianNIC}")
+    public ResponseEntity<String> deleteGuardian(@Valid @PathVariable String guardianNIC) {
+        guardianService.deleteGuardian(guardianNIC);
+        return ResponseEntity.ok("Guardian deleted successfully");
+    }
 }
