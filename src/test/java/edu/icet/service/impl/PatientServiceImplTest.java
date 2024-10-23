@@ -10,10 +10,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -34,6 +34,15 @@ class PatientServiceImplTest {
     }
 
     @Test
+
+    void updatePatient() {
+        Patient patient = new Patient();
+        PatientEntity patientEntity = new PatientEntity();
+        when(objectMapper.convertValue(patient, PatientEntity.class)).thenReturn(patientEntity);
+        patientService.updatePatient(patient);
+        verify(patientDao).save(patientEntity);
+    
+
     void getByName() {
         String name = "John";
         PatientEntity patientEntity = new PatientEntity();
@@ -90,5 +99,6 @@ class PatientServiceImplTest {
         assertTrue(result.contains(patient1));
         assertTrue(result.contains(patient2));
     }
+
 
 }

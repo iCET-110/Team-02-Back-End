@@ -31,22 +31,50 @@ public class PatientController {
         return ResponseEntity.ok("Patient added successfully");
     }
 
+
     @GetMapping("/patient-get-all")
     public List<Patient> getPatients() {
         return patientService.getPatients();
     }
 
-    @GetMapping("/patient-search-by-id/{id}")
-    public Patient searchPatientById(@Valid @PathVariable Long id) {
+
+    @GetMapping("/{id}")
+    public Patient searchPatientById(@PathVariable Long id) {
         return patientService.findById(id);
     }
 
-    @GetMapping("/patient-search-by-name/{name}")
-    public List<Patient> searchPatientByName(@Valid @PathVariable String name){
+    @GetMapping("/name/{name}")
+    public List<Patient> searchPatientByName(@PathVariable String name) {
         return patientService.getByName(name);
     }
 
-    @GetMapping("/patient-search-by-nic/{nic}")
+    @GetMapping("/nic/{nic}")
+    public Patient searchPatientByNic(@PathVariable String nic) {
+        return patientService.getByNic(nic);
+    }
+
+    @PutMapping("/update-patient")
+    public ResponseEntity<String> updatePatient(@Valid @RequestBody Patient patient) {
+        patientService.updatePatient(patient);
+        return ResponseEntity.ok("Patient Updated Successfully");
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
+   @GetMapping("/patient-search-by-id/{id}")
+    public Patient searchPatientById(@Valid @PathVariable Long id) {
+        return patientService.findById(id);
+    }
+   @GetMapping("/patient-search-by-nic/{nic}")
     public Patient searchPatientByNic(@PathVariable String nic){
       return patientService.getByNic(nic);
     }
@@ -80,4 +108,5 @@ public class PatientController {
         });
         return errors;
     }
+
 }
