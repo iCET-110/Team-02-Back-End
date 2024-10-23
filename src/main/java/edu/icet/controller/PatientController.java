@@ -36,12 +36,12 @@ public class PatientController {
         return patientService.getPatients();
     }
 
-    @GetMapping("/patient-serach-by-id/{id}")
+    @GetMapping("/patient-search-by-id/{id}")
     public Patient searchPatientById(@Valid @PathVariable Long id) {
         return patientService.findById(id);
     }
 
-    @GetMapping("/patient-serach-by-name/{name}")
+    @GetMapping("/patient-search-by-name/{name}")
     public List<Patient> searchPatientByName(@Valid @PathVariable String name){
         return patientService.getByName(name);
     }
