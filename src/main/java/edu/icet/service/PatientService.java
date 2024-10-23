@@ -7,8 +7,8 @@ public interface PatientService {
     Patient findById(Long id);
     Patient getByNic(String nic);
     List<Patient> getPatients();
-    void updatePatient(Patient patient);
-    void addPatient(Patient patient);
+    boolean updatePatient(Patient patient);
+    boolean addPatient(Patient patient);
 
     void deletPatient(Long id);
 

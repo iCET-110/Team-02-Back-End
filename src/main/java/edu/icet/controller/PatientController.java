@@ -25,10 +25,14 @@ public class PatientController {
     final PatientService patientService;
 
     @PostMapping("/add-patient")
-    public ResponseEntity<String> addPatient(@Valid @RequestBody Patient patient){
+    public ResponseEntity<String> addPatient(@Valid @RequestBody Patient patient) {
         log.info("Received Patient: {}", patient);
-        patientService.addPatient(patient);
-        return ResponseEntity.ok("Patient added successfully");
+        if (patientService.addPatient(patient)) {
+            return ResponseEntity.ok("Patient added successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to add patient. Please try again later.");
+        }
     }
 
     @GetMapping("/patient-get-all")
@@ -51,12 +55,15 @@ public class PatientController {
         return patientService.getByNic(nic);
     }
 
-    @PutMapping
+    @PutMapping("/update-patient")
     public ResponseEntity<String> updatePatient(@Valid @RequestBody Patient patient) {
-        patientService.updatePatient(patient);
-        return ResponseEntity.ok("Patient updated successfully");
+        if (patientService.updatePatient(patient)) {
+            return ResponseEntity.ok("Patient updated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to update patient. Please try again later.");
+        }
     }
-
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
