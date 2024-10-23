@@ -26,7 +26,5 @@ public class GuardianController {
     }
 
     @PutMapping("/update-guardian")
-    public void updateGuardian(@RequestBody Guardian guardian) {
-        guardianService.updateGuardian(guardian);
-    }
+    public void updateGuardian(@RequestBody Guardian guardian) {guardianService.updateGuardian(guardian);}
 }

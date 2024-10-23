@@ -34,15 +34,15 @@ class PatientServiceImplTest {
     }
 
     @Test
-
     void updatePatient() {
         Patient patient = new Patient();
         PatientEntity patientEntity = new PatientEntity();
         when(objectMapper.convertValue(patient, PatientEntity.class)).thenReturn(patientEntity);
         patientService.updatePatient(patient);
         verify(patientDao).save(patientEntity);
+    }
     
-
+    @Test
     void getByName() {
         String name = "John";
         PatientEntity patientEntity = new PatientEntity();
