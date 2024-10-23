@@ -30,9 +30,6 @@ public class PatientServiceImpl implements PatientService {
             return false;
         }
     }
-
-
-
     @Override
     public List<Patient> getByName(String name) {
         List<Patient> patientList = new ArrayList<>();
@@ -47,21 +44,18 @@ public class PatientServiceImpl implements PatientService {
                 .map(entity -> objectMapper.convertValue(entity, Patient.class))
                 .orElse(null);
     }
-
     @Override
     public Patient getByNic(String nic) {
         return objectMapper.convertValue(patientDao.findByNic(nic), Patient.class);
     }
-
     @Override
     public List<Patient> getPatients() {
         ArrayList<Patient> patientArrayList = new ArrayList<>();
-        patientDao.findAll().forEach(entity->{
+        patientDao.findAll().forEach(entity -> {
             patientArrayList.add(objectMapper.convertValue(entity, Patient.class));
         });
         return patientArrayList;
     }
-
     @Override
     public boolean updatePatient(Patient patient) {
         try {
@@ -72,12 +66,10 @@ public class PatientServiceImpl implements PatientService {
             return false;
         }
     }
-
     @Override
     public void deletePatient(Long id) {
         patientDao.deleteById(id);  // Implementation of delete by ID
     }
-
     @Override
     public void deleteAll() {
         patientDao.deleteAll();  // Implementation of delete all patients

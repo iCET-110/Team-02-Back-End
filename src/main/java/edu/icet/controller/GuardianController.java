@@ -43,4 +43,7 @@ public class GuardianController {
         guardianService.deleteGuardian(guardianNIC);
         return ResponseEntity.ok("Guardian deleted successfully");
     }
+
+    @PutMapping("/update-guardian")
+    public void updateGuardian(@RequestBody Guardian guardian) {guardianService.updateGuardian(guardian);}
 }

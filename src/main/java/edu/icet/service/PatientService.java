@@ -1,5 +1,7 @@
 package edu.icet.service;
+
 import edu.icet.dto.Patient;
+
 import java.util.List;
 
 public interface PatientService {
@@ -9,8 +11,7 @@ public interface PatientService {
     List<Patient> getPatients();
     boolean updatePatient(Patient patient);
     boolean addPatient(Patient patient);
-
     void deletePatient(Long id);
-
     void deleteAll();
 }
+
