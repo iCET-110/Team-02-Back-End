@@ -16,7 +16,7 @@ import java.util.Date;
 @Table(name = "patient")
 public class PatientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
